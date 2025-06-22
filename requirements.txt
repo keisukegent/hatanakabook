@@ -1,0 +1,9 @@
+streamlit
+gtts
+SpeechRecognition
+matplotlib
+pandas
+streamlit-webrtc
+av
+pydub
+numpy
