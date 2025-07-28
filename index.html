@@ -1,45 +1,794 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <header>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1360122044663499');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1360122044663499&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心の豊かさが導く人生の扉 | 予約販売開始</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            line-height: 1.7;
+            color: #5a4a3a;
+            background: #fdf8f5;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ヘッダー */
+        .header {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+        
+        .header-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 182, 193, 0.3);
+            z-index: 2;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 3;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .pre-order-badge {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: #8b4a6b;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: gentle-pulse 3s infinite;
+            box-shadow: 0 4px 15px rgba(255,154,158,0.4);
+        }
+        
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        
+        .book-title {
+            font-size: 2.6rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            color: #fff;
+        }
+        
+        .book-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        }
+        
+        .author-name {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        }
+        
+        .release-date {
+            background: rgba(255,255,255,0.25);
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
 
-<meta name="facebook-domain-verification" content="t629w5odizxnmgb0mwkt2prxcbg80x" />
-        <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
-    <h1>文章だけで１円も使わずにお客様も売上も増大させる<br>日本一親切なスピコピーライティング術動画セミナー</h1>
+        /* メインコンテンツ */
+        .main-content {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #fef7f0 0%, #fdf2f8 100%);
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .book-cover {
+            text-align: center;
+        }
+        
+        .cover-placeholder {
+            width: 280px;
+            height: 400px;
+            background: linear-gradient(135deg, #f8bbd9 0%, #f093fb 100%);
+            margin: 0 auto;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.4;
+            box-shadow: 0 20px 40px rgba(248,187,217,0.4);
+            transform: rotate(-1deg);
+            transition: transform 0.3s ease;
+            border: 3px solid rgba(255,255,255,0.8);
+        }
+        
+        .cover-placeholder:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+        
+        .book-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #8b4a6b;
+            font-weight: 600;
+        }
+        
+        .book-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #6b5b73;
+        }
+        
+        .key-points {
+            background: linear-gradient(135deg, #fff0f3 0%, #fef7ff 100%);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid #f8bbd9;
+            position: relative;
+        }
+        
+        .key-points::before {
+            content: "🌸";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .key-points h3 {
+            color: #8b4a6b;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
+        
+        .key-points ul {
+            list-style: none;
+        }
+        
+        .key-points li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 30px;
+            color: #6b5b73;
+        }
+        
+        .key-points li:before {
+            content: "🌼";
+            position: absolute;
+            left: 0;
+            font-size: 1.1rem;
+        }
 
+        /* 予約セクション */
+        .pre-order-section {
+            background: linear-gradient(135deg, #ffeef7 0%, #fff0f5 100%);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .pre-order-section::before {
+            content: "🌺🌸💐";
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            opacity: 0.6;
+        }
+        
+        .pre-order-card {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(248,187,217,0.2);
+            max-width: 500px;
+            margin: 0 auto;
+            border: 3px solid #f8bbd9;
+            position: relative;
+        }
+        
+        .pre-order-card::before {
+            content: "💝";
+            position: absolute;
+            top: -20px;
+            right: -15px;
+            font-size: 2.5rem;
+            transform: rotate(15deg);
+        }
+        
+        .price-info {
+            margin-bottom: 35px;
+        }
+        
+        .current-price {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #d63384;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(214,51,132,0.2);
+        }
+        
+        .price-note {
+            color: #8b4a6b;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .pre-order-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: #8b4a6b;
+            padding: 25px 55px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            box-shadow: 0 12px 35px rgba(255,154,158,0.4);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            display: block;
+            border: 2px solid rgba(255,255,255,0.8);
+        }
+        
+        .pre-order-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 45px rgba(255,154,158,0.5);
+            background: linear-gradient(45deg, #fecfef, #ff9a9e);
+        }
+        
+        .benefits {
+            font-size: 1rem;
+            color: #8b4a6b;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #fff5f8 0%, #fef7ff 100%);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #f8bbd9;
+        }
+
+        /* 特典セクション */
+        .bonuses {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            position: relative;
+        }
+        
+        .bonuses::before {
+            content: "✨🎀✨🎀✨";
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.8rem;
+            opacity: 0.7;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 600;
+        }
+        
+        .bonuses-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+        
+        .bonus-item {
+            text-align: center;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 3px solid rgba(255,255,255,0.9);
+        }
+        
+        .bonus-item:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+        }
+        
+        .bonus-item::before {
+            content: "🎁";
+            position: absolute;
+            top: -15px;
+            right: -10px;
+            font-size: 2rem;
+            z-index: 10;
+        }
+        
+        .bonus-value-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: #8b4a6b;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(255,154,158,0.4);
+        }
+        
+        .bonus-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #fef7f0 0%, #fdf2f8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d63384;
+            font-size: 0.9rem;
+            border-bottom: 2px solid #f8bbd9;
+        }
+        
+        .bonus-content {
+            padding: 30px 25px;
+            position: relative;
+        }
+        
+        .bonus-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+        
+        .bonus-title {
+            font-weight: bold;
+            color: #8b4a6b;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .bonus-desc {
+            font-size: 1rem;
+            color: #6b5b73;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .bonus-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        
+        .bonus-features li {
+            padding: 6px 0;
+            position: relative;
+            padding-left: 25px;
+            font-size: 0.9rem;
+            color: #8b4a6b;
+        }
+        
+        .bonus-features li:before {
+            content: "🌸";
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+        }
+        
+        .bonus-highlight {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #8b4a6b;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 15px;
+            display: inline-block;
+            border: 2px solid rgba(255,255,255,0.8);
+        }
+
+        /* フッター */
+        .footer {
+            background: linear-gradient(135deg, #8b4a6b 0%, #6b5b73 100%);
+            color: #fef7ff;
+            padding: 60px 0 40px;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: "🌙⭐✨";
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            opacity: 0.6;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            margin-bottom: 30px;
+        }
+        
+        .author-profile {
+            text-align: center;
+        }
+        
+        .author-photo-footer {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            border: 4px solid #ff9a9e;
+            box-shadow: 0 8px 25px rgba(255,154,158,0.3);
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+        
+        .author-name-footer {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ff9a9e;
+        }
+        
+        .author-title {
+            font-size: 0.9rem;
+            color: #e6c2cc;
+            margin-bottom: 15px;
+        }
+        
+        .author-bio-footer {
+            text-align: left;
+        }
+        
+        .author-bio-footer h3 {
+            color: #ff9a9e;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .author-bio-footer p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #e6c2cc;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            border-top: 1px solid #a67c8a;
+            padding-top: 25px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #d4a5b2;
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .header {
+                min-height: 400px;
+            }
+            
+            .book-title {
+                font-size: 2rem;
+            }
+            
+            .header-content {
+                padding: 40px 20px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .cover-placeholder {
+                width: 220px;
+                height: 320px;
+                font-size: 1rem;
+            }
+            
+            .bonus-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .pre-order-card {
+                padding: 30px 20px;
+                margin: 0 10px;
+            }
+            
+            .pre-order-button {
+                font-size: 1.2rem;
+                padding: 20px 40px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .author-bio-footer {
+                text-align: center;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .key-points {
+                padding: 20px;
+            }
+            
+            .bonus-item {
+                margin: 0 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .book-title {
+                font-size: 1.6rem;
+            }
+            
+            .current-price {
+                font-size: 2.2rem;
+            }
+            
+            .cover-placeholder {
+                width: 180px;
+                height: 260px;
+                font-size: 0.9rem;
+            }
+            
+            .bonus-content {
+                padding: 20px 15px;
+            }
+            
+            .pre-order-card {
+                padding: 25px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <!-- 画像が表示されない場合はグラデーション背景で代替 -->
+        <img src="./header-image.jpg" alt="畑中映理子と書籍" class="header-image" onerror="this.style.display='none';">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="pre-order-badge">📚 予約販売開始</div>
+            <h1 class="book-title">心の豊かさが導く人生の扉</h1>
+            <p class="book-subtitle">〜真の幸福を見つける5つの道筋〜</p>
+            <p class="author-name">著者：畑中映理子</p>
+            <div class="release-date">📅 2025年12月発売予定</div>
+        </div>
     </header>
-    
-<!-- フォーム -->
-<div class="form_box">
-    <img class="form" src="images/form.gif">
-  	<form action="https://24auto.biz/aai49690/planmail.php" method="post">
-	  <input name="pid" type="hidden" value="16" />
-      <input type="text" name="email" class="name_sp" value="" placeholder="メールアドレスを入力" >
-    <input type="image" name="submit" class="play" value="" src="images/play.gif"
-onmouseover="this.src='images/play2.gif'" onmouseout="this.src='images/play.gif'"/>
-    </form>
-    <div class="box">
-      <p class="last">
-      ※いつでも解除が可能ですのでご安心ください</p>
-    </div>
-  </div>
-  <footer><p class=copy>&copy;結びコンサルティング事務所 All Rights Reserved.<br>
-<a href="https://kuwahara-writing.com/?page_id=51/">特定商取引法の表記</a></p></footer>
+
+    <!-- メインコンテンツ -->
+    <section class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <div class="book-cover">
+                    <div class="cover-placeholder">
+                        心の豊かさが導く<br>人生の扉<br><br>〜真の幸福を見つける<br>5つの道筋〜<br><br>畑中映理子
+                    </div>
+                </div>
+                <div class="book-info">
+                    <h2>人生を変える50のメッセージ</h2>
+                    <p class="book-description">
+                        20年間のトラウマカウンセリング経験から生まれた、心の豊かさを取り戻すための実践的な智慧。あなたが本来持っている輝きを思い出し、自分らしい人生を歩むためのガイドブック。
+                    </p>
+                    <div class="key-points">
+                        <h3>この本で得られること</h3>
+                        <ul>
+                            <li>自分を受け入れる方法</li>
+                            <li>豊かな人間関係の築き方</li>
+                            <li>感情との上手な付き合い方</li>
+                            <li>人生の方向性を見つける技術</li>
+                            <li>愛と豊かさの循環を作る方法</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約セクション -->
+    <section class="pre-order-section">
+        <div class="container">
+            <h2 class="section-title">📚 今すぐ予約する</h2>
+            <div class="pre-order-card">
+                <div class="price-info">
+                    <div class="current-price">1,680円</div>
+                    <div class="price-note">税込・送料無料</div>
+                </div>
+                <a href="https://www.amazon.co.jp/%E8%A6%AA%E5%AD%90%E3%81%AE%E6%84%8F%E5%91%B3%E2%80%95%E3%80%8C%E8%A6%AA%E3%81%AE%E5%91%AA%E7%B8%9B%E3%80%8D%E3%81%8B%E3%82%89%E8%87%AA%E7%94%B1%E3%81%AB%E3%81%AA%E3%82%8B%E6%96%B9%E6%B3%95-%E7%95%91%E4%B8%AD%E6%98%A0%E7%90%86%E5%AD%90/dp/491051208X?tag=googhydr-22&source=dsa&hvcampaign=books&gad_source=1" target="_blank" class="pre-order-button">今すぐ予約する</a>
+                <div class="benefits">
+                    ✅ 送料無料<br>
+                    ✅ 発売日にお届け<br>
+                    ✅ 購入者限定特典付き
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特典セクション -->
+    <section class="bonuses">
+        <div class="container">
+            <h2 class="section-title">🎁 購入者限定特典</h2>
+            <p class="bonuses-subtitle">予約購入者様限定で、書籍と合わせて人生を変える完全パッケージをお届け</p>
+            <div class="bonus-grid">
+                <div class="bonus-item">
+                    <div class="bonus-value-badge">限定品</div>
+                    <img src="./tarot-cards-image.jpg" alt="オリジナルタロットカード" class="bonus-image" onerror="this.innerHTML='🔮<br>タロットカード<br>画像'">
+                    <div class="bonus-content">
+                        <div class="bonus-icon">🔮</div>
+                        <div class="bonus-title">オリジナルタロットカード</div>
+                        <div class="bonus-desc">畑中映理子監修の心理学ベース特製カード</div>
+                        <ul class="bonus-features">
+                            <li>50枚フルカラー印刷</li>
+                            <li>解説書付き（32ページ）</li>
+                            <li>心の声を聞く専用設計</li>
+                            <li>高級化粧箱入り</li>
+                        </ul>
+                        <div class="bonus-highlight">市販では手に入らない限定品</div>
+                    </div>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-value-badge">PDF版</div>
+                    <img src="./worksheet-image.jpg" alt="実践ワークシート" class="bonus-image" onerror="this.innerHTML='📝<br>ワークシート<br>画像'">
+                    <div class="bonus-content">
+                        <div class="bonus-icon">📝</div>
+                        <div class="bonus-title">実践ワークシート集</div>
+                        <div class="bonus-desc">各章の学びを深める専用ワークブック</div>
+                        <ul class="bonus-features">
+                            <li>全5章対応（60ページ）</li>
+                            <li>書き込み式PDF版</li>
+                            <li>印刷用高解像度</li>
+                            <li>進捗チェック機能付き</li>
+                        </ul>
+                        <div class="bonus-highlight">自分だけの成長記録帳</div>
+                    </div>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-value-badge">ライブ参加</div>
+                    <img src="./online-seminar-image.jpg" alt="オンライン講座" class="bonus-image" onerror="this.innerHTML='🎯<br>オンライン講座<br>画像'">
+                    <div class="bonus-content">
+                        <div class="bonus-icon">🎯</div>
+                        <div class="bonus-title">特別オンライン講座</div>
+                        <div class="bonus-desc">書籍の内容をさらに深く学ぶ90分講座</div>
+                        <ul class="bonus-features">
+                            <li>ライブ質疑応答セッション</li>
+                            <li>録画視聴可能（30日間）</li>
+                            <li>参加者限定資料配布</li>
+                            <li>個別フィードバック</li>
+                        </ul>
+                        <div class="bonus-highlight">著者と直接つながれる</div>
+                    </div>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-value-badge">1年間</div>
+                    <img src="./newsletter-image.jpg" alt="著者からのメッセージ" class="bonus-image" onerror="this.innerHTML='💌<br>メルマガ<br>画像'">
+                    <div class="bonus-content">
+                        <div class="bonus-icon">💌</div>
+                        <div class="bonus-title">プレミアムメルマガ</div>
+                        <div class="bonus-desc">月1回の心温まる特別メッセージ</div>
+                        <ul class="bonus-features">
+                            <li>1年間（12回）配信</li>
+                            <li>読者限定コンテンツ</li>
+                            <li>最新セミナー情報</li>
+                            <li>特別割引クーポン</li>
+                        </ul>
+                        <div class="bonus-highlight">継続的なサポート</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="author-profile">
+                    <img src="./author-photo.jpg" alt="畑中映理子" class="author-photo-footer" onerror="this.style.display='none'; this.parentNode.innerHTML+='<div style=&quot;width:150px; height:150px; border-radius:50%; background:linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); margin:0 auto 20px; display:flex; align-items:center; justify-content:center; color:#8b4a6b; font-weight:bold;&quot;>👤<br>プロフィール<br>写真</div>';">
+                    <div class="author-name-footer">畑中映理子</div>
+                    <div class="author-title">心理カウンセラー・著者</div>
+                </div>
+                <div class="author-bio-footer">
+                    <h3>プロフィール</h3>
+                    <p>
+                        一般社団法人国際セルフコーチング協会代表理事。関西大学文学部卒業。
+                        二人の子どもの出産後、うつを経験し、長い間心身の不調に悩まされながら暮らしていたが、NLP、エニアグラム、交流分析などの心理学に出会い、人生をV字回復させる。
+                    </p>
+                    <p>
+                        その経験をもとに同じような悩みに苦しんでいる人たちのために、シンプルで即効性のあるオリジナル「セルフコーチングメソッド」を確立。全国でコーチング＆カウンセリングを行っている。
+                    </p>
+                    <p>
+                        著書に「親子の意味―親の呪縛から自由になる方法」がある。
+                    </p>
+                </div>
+            </div>
+            <div class="contact-info">
+                <p>&copy; 2024 畑中映理子. All rights reserved.</p>
+                <p>お問い合わせ：atelier.charm9030@gmail.com</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
