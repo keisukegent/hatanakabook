@@ -43,6 +43,7 @@
             height: 100%;
             object-fit: cover;
             z-index: 1;
+            opacity: 0.8;
         }
         
         .header-overlay {
@@ -51,7 +52,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 182, 193, 0.3);
+            background: rgba(255, 182, 193, 0.4);
             z-index: 2;
         }
         
@@ -120,14 +121,20 @@
         }
         
         .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
             align-items: center;
+            text-align: center;
         }
         
         .book-cover {
-            text-align: center;
+            order: 1;
+        }
+        
+        .book-info {
+            order: 2;
+            max-width: 800px;
         }
         
         .cover-placeholder {
@@ -388,13 +395,14 @@
             height: 200px;
             object-fit: cover;
             border-bottom: 2px solid #f8bbd9;
+            display: block;
         }
         
         .bonus-image-placeholder {
             width: 100%;
             height: 200px;
             background: linear-gradient(135deg, #fef7f0 0%, #fdf2f8 100%);
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             color: #d63384;
@@ -506,7 +514,7 @@
             height: 120px;
             border-radius: 50%;
             margin: 0 auto 20px;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             border: 3px solid #ff9a9e;
@@ -563,6 +571,25 @@
         }
 
         /* レスポンシブ */
+        @media (min-width: 768px) {
+            .content-grid {
+                flex-direction: row;
+                text-align: left;
+                gap: 50px;
+            }
+            
+            .book-cover {
+                order: 1;
+                flex: 0 0 300px;
+            }
+            
+            .book-info {
+                order: 2;
+                flex: 1;
+                text-align: left;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header {
                 min-height: 400px;
@@ -577,7 +604,7 @@
             }
             
             .content-grid {
-                grid-template-columns: 1fr;
+                flex-direction: column;
                 text-align: center;
                 gap: 30px;
             }
@@ -640,7 +667,7 @@
 <body>
     <!-- ヘッダー -->
     <header class="header">
-        <img src="header-image.jpg" alt="畑中映理子と書籍" class="header-image">
+        <img src="header-image.jpg" alt="畑中映理子と書籍" class="header-image" style="display: none;" onload="this.style.display='block';">
         <div class="header-overlay"></div>
         <div class="header-content">
             <div class="pre-order-badge">📚 予約販売開始</div>
