@@ -35,6 +35,16 @@
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
         }
         
+        .header-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
         .header-overlay {
             position: absolute;
             top: 0;
@@ -111,7 +121,7 @@
         
         .content-grid {
             display: grid;
-            grid-template-columns: 350px 1fr;
+            grid-template-columns: 1fr 2fr;
             gap: 50px;
             align-items: center;
         }
@@ -220,6 +230,14 @@
             opacity: 0.6;
         }
         
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+            color: #8b4a6b;
+            font-weight: 600;
+        }
+        
         .pre-order-card {
             background: white;
             padding: 50px;
@@ -308,13 +326,9 @@
             opacity: 0.7;
         }
         
-        .section-title {
-            text-align: center;
-            font-size: 2.3rem;
-            margin-bottom: 20px;
+        .bonuses .section-title {
             color: white;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            font-weight: 600;
         }
         
         .bonuses-subtitle {
@@ -332,7 +346,6 @@
         }
         
         .bonus-item {
-            text-align: center;
             background: white;
             border-radius: 25px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
@@ -373,6 +386,13 @@
         .bonus-image {
             width: 100%;
             height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid #f8bbd9;
+        }
+        
+        .bonus-image-placeholder {
+            width: 100%;
+            height: 200px;
             background: linear-gradient(135deg, #fef7f0 0%, #fdf2f8 100%);
             display: flex;
             align-items: center;
@@ -380,12 +400,13 @@
             color: #d63384;
             font-size: 0.9rem;
             border-bottom: 2px solid #f8bbd9;
-            position: relative;
+            text-align: center;
+            line-height: 1.4;
         }
         
         .bonus-content {
             padding: 30px 25px;
-            position: relative;
+            text-align: center;
         }
         
         .bonus-icon {
@@ -461,18 +482,26 @@
         }
         
         .footer-content {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
+            text-align: center;
             margin-bottom: 30px;
         }
         
         .author-profile {
-            text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
         
-        .author-photo-footer {
+        .author-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            border: 3px solid #ff9a9e;
+            box-shadow: 0 8px 25px rgba(255,154,158,0.3);
+        }
+        
+        .author-photo-placeholder {
             width: 120px;
             height: 120px;
             border-radius: 50%;
@@ -500,11 +529,10 @@
         .author-title {
             font-size: 0.9rem;
             color: #e6c2cc;
-            margin-bottom: 15px;
+            margin-bottom: 30px;
         }
         
         .author-bio-footer {
-            text-align: center;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -575,26 +603,12 @@
                 padding: 20px 40px;
             }
             
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 30px;
-            }
-            
-            .author-bio-footer {
-                text-align: center;
-            }
-            
             .section-title {
                 font-size: 1.8rem;
             }
             
             .key-points {
                 padding: 20px;
-            }
-            
-            .bonus-item {
-                margin: 0 10px;
             }
         }
         
@@ -626,7 +640,7 @@
 <body>
     <!-- ヘッダー -->
     <header class="header">
-        <img src="header-image.jpg" alt="畑中映理子と書籍" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;" onerror="this.style.display='none';">
+        <img src="header-image.jpg" alt="畑中映理子と書籍" class="header-image">
         <div class="header-overlay"></div>
         <div class="header-content">
             <div class="pre-order-badge">📚 予約販売開始</div>
@@ -693,7 +707,8 @@
             <div class="bonus-grid">
                 <div class="bonus-item">
                     <div class="bonus-value-badge">限定品</div>
-                    <img src="tarot-cards-image.jpg" alt="オリジナルタロットカード" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #f8bbd9;" onerror="this.style.display='none'; this.parentNode.innerHTML+='<div style=&quot;width: 100%; height: 200px; background: linear-gradient(135deg, #fef7f0 0%, #fdf2f8 100%); display: flex; align-items: center; justify-content: center; color: #d63384; font-size: 0.9rem; border-bottom: 2px solid #f8bbd9;&quot;>🔮<br>タロットカード<br>画像</div>';">
+                    <img src="tarot-cards-image.jpg" alt="オリジナルタロットカード" class="bonus-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="bonus-image-placeholder" style="display: none;">🔮<br>タロットカード<br>画像</div>
                     <div class="bonus-content">
                         <div class="bonus-icon">🔮</div>
                         <div class="bonus-title">オリジナルタロットカード</div>
@@ -709,7 +724,8 @@
                 </div>
                 <div class="bonus-item">
                     <div class="bonus-value-badge">PDF版</div>
-                    <img src="worksheet-image.jpg" alt="実践ワークシート" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #f8bbd9;" onerror="this.style.display='none'; this.parentNode.innerHTML+='<div style=&quot;width: 100%; height: 200px; background: linear-gradient(135deg, #fef7f0 0%, #fdf2f8 100%); display: flex; align-items: center; justify-content: center; color: #d63384; font-size: 0.9rem; border-bottom: 2px solid #f8bbd9;&quot;>📝<br>ワークシート<br>画像</div>';">
+                    <img src="worksheet-image.jpg" alt="実践ワークシート" class="bonus-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="bonus-image-placeholder" style="display: none;">📝<br>ワークシート<br>画像</div>
                     <div class="bonus-content">
                         <div class="bonus-icon">📝</div>
                         <div class="bonus-title">実践ワークシート集</div>
@@ -725,7 +741,8 @@
                 </div>
                 <div class="bonus-item">
                     <div class="bonus-value-badge">ライブ参加</div>
-                    <img src="online-seminar-image.jpg" alt="オンライン講座" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #f8bbd9;" onerror="this.style.display='none'; this.parentNode.innerHTML+='<div style=&quot;width: 100%; height: 200px; background: linear-gradient(135deg, #fef7f0 0%, #fdf2f8 100%); display: flex; align-items: center; justify-content: center; color: #d63384; font-size: 0.9rem; border-bottom: 2px solid #f8bbd9;&quot;>🎯<br>オンライン講座<br>画像</div>';">
+                    <img src="online-seminar-image.jpg" alt="オンライン講座" class="bonus-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="bonus-image-placeholder" style="display: none;">🎯<br>オンライン講座<br>画像</div>
                     <div class="bonus-content">
                         <div class="bonus-icon">🎯</div>
                         <div class="bonus-title">特別オンライン講座</div>
@@ -741,7 +758,8 @@
                 </div>
                 <div class="bonus-item">
                     <div class="bonus-value-badge">1年間</div>
-                    <img src="ニュースレター画像.jpg" alt="著者からのメッセージ" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #f8bbd9;" onerror="this.style.display='none'; this.parentNode.innerHTML+='<div style=&quot;width: 100%; height: 200px; background: linear-gradient(135deg, #fef7f0 0%, #fdf2f8 100%); display: flex; align-items: center; justify-content: center; color: #d63384; font-size: 0.9rem; border-bottom: 2px solid #f8bbd9;&quot;>💌<br>メルマガ<br>画像</div>';">
+                    <img src="newsletter-image.jpg" alt="著者からのメッセージ" class="bonus-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="bonus-image-placeholder" style="display: none;">💌<br>メルマガ<br>画像</div>
                     <div class="bonus-content">
                         <div class="bonus-icon">💌</div>
                         <div class="bonus-title">プレミアムメルマガ</div>
@@ -764,8 +782,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="author-profile">
-                    <img src="著者写真.jpg" alt="畑中映理子" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block; border: 3px solid #ff9a9e; box-shadow: 0 8px 25px rgba(255,154,158,0.3);" onerror="this.style.display='none'; this.parentNode.innerHTML+='<div style=&quot;width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border: 3px solid #ff9a9e; box-shadow: 0 8px 25px rgba(255,154,158,0.3); background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #8b4a6b; font-weight: bold; font-size: 0.8rem; text-align: center; line-height: 1.2;&quot;>📷<br>著者写真</div>';">
-
+                    <img src="author-photo.jpg" alt="畑中映理子" class="author-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="author-photo-placeholder" style="display: none;">📷<br>著者写真</div>
                     <div class="author-name-footer">畑中映理子</div>
                     <div class="author-title">心理カウンセラー・著者</div>
                 </div>
